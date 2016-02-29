@@ -27,7 +27,6 @@ passwd -l mysql
 passwd -l statd
 passwd -l administrator
 passwd -l ntp
-wget https://veil.us.to/ubuntu.repos --no-check-certificate
 sudo cat ubuntu.repos >> /etc/apt/sources.list
 sudo apt-get update
 sudo apt-get dist-upgrade -y
