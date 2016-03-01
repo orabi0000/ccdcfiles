@@ -15,3 +15,6 @@ Remove-ADComputer -Identity XP-WS
 Remove-ADComputer -Identity e-commerce
 Remove-ADComputer -Identity ubuntu-ws
 
+net user IWAM_SHAREPEG /del
+net user IUSR_SHAREPEG /del
+net user HVU_FILESERVER1 /del
