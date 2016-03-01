@@ -29,24 +29,13 @@ chkconfig --del dovecat
 chkconfig --level 15 off
 chkconfig --del named
 chkconfig --level 15 off
-yum remove bind*
-yum remove sane*
-yum remove cups*
-yum remove dropbox*
-yum remove ldapjdk
-yum remove proftpd*
-yum remove samba*
-#!/bin/bash
-# A Linux Shell Script with common rules for IPTABLES Firewall.
-# By default this script only open port 80, 22, 53 (input)
-# All outgoing traffic is allowed (default - output)
-# -------------------------------------------------------------------------
-# Copyright (c) 2004 nixCraft project 
-# This script is licensed under GNU GPL version 2.0 or above
-# -------------------------------------------------------------------------
-# This script is part of nixCraft shell script collection (NSSC)
-# Visit http://bash.cyberciti.biz/ for more information.
-# -------------------------------------------------------------------------
+yum remove bind* -y
+yum remove sane* -y
+yum remove cups -y
+yum remove dropbox* -y
+yum remove ldapjdk -y 
+yum remove proftpd* -y
+yum remove samba* -y
 IPT="/sbin/iptables"
 SPAMLIST="blockedip"
 SPAMDROPMSG="BLOCKED IP DROP"
@@ -60,10 +49,9 @@ $IPT -t mangle -X
 modprobe ip_conntrack
 [ -f /root/scripts/blocked.ips.txt ] && BADIPS=$(egrep -v -E "^#|^$" /root/scripts/blocked.ips.txt)
 PUB_IF="eth0"
-#unlimited
 $IPT -A INPUT -i lo -j ACCEPT
 $IPT -A OUTPUT -o lo -j ACCEPT
-# DROP all incomming traffic
+# DROP all incoming traffic
 $IPT -P INPUT DROP
 $IPT -P OUTPUT DROP
 $IPT -P FORWARD DROP
@@ -124,3 +112,4 @@ $IPT -A INPUT -j LOG
 $IPT -A FORWARD -j LOG
 $IPT -A INPUT -j DROP
 exit 0
+
