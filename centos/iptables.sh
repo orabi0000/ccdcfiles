@@ -74,4 +74,5 @@ $IPT -A INPUT -j LOG
 $IPT -A FORWARD -j LOG
 $IPT -A INPUT -j DROP
 exit 0
-
+service iptables save
+service iptables restart
