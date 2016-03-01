@@ -1,10 +1,11 @@
+sudo apt-get purge apache2
 passwd
 passwd -l daemon
 passwd -l bin
 passwd -l sys
 passwd -l sync
 passwd -l games
-passwd -l ban
+passwd -l man
 passwd -l lp
 passwd -l mail
 passwd -l news
@@ -21,13 +22,10 @@ passwd -l dhcp
 passwd -l syslog
 passwd -l klog
 passwd -l bind
-passwd -l sshd
 passwd -l adam
-passwd -l mysql
 passwd -l statd
 passwd -l administrator
 passwd -l ntp
+passwd -l messagebus
 sudo apt-get update
-sudo apt-get dist-upgrade -y
-sudo apt-get update
-sudo apt-get upgrade -y
+sudo apt-get autoremove
