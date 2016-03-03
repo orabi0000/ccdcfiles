@@ -1,13 +1,13 @@
 cd /tmp
-wget http://download.fedoraproject.org/pub/epel/5/i386/epel-release-5-4.noarch.rpm
-rpm -ivh epel-release-5-4.noarch.rpm
+#wget http://download.fedoraproject.org/pub/epel/5/i386/epel-release-5-4.noarch.rpm
+rpm -ivh ./epel-release-5-4.noarch.rpm
 cd
 yum install shorewall
-wget wget http://prdownloads.sourceforge.net/webadmin/webmin-1.780-1.noarch.rpm
+#wget wget http://prdownloads.sourceforge.net/webadmin/webmin-1.780-1.noarch.rpm
 
 yum -y install perl perl-net-ssleay openssl perl-io-tty fail2ban
 
-rpm -U webmin-1.780-1.noarch.rpm
+rpm -U ./webmin-1.780-1.noarch.rpm
 
 IPT="/sbin/iptables"
 SPAMLIST="blockedip"
