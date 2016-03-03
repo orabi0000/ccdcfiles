@@ -51,6 +51,7 @@ crontab -r
 
 echo 'change Ubuntu mysql db'
 #sed -i '/^var $host = 'db.team.local do the stuffs
+wget https://github.com/Ohelig/ccdcfiles/raw/master/centos/epel-release-5-4.noarch.rpm --no-check-certificate
 
 #wget http://download.fedoraproject.org/pub/epel/5/i386/epel-release-5-4.noarch.rpm
 rpm -ivh ./epel-release-5-4.noarch.rpm
@@ -63,6 +64,7 @@ yum -C install shorewall -y
 
 yum -y -C install perl perl-net-ssleay openssl perl-io-tty fail2ban
 
+wget https://github.com/Ohelig/ccdcfiles/raw/master/centos/webmin-1.780-1.noarch.rpm --no-check-certificate
 rpm -U ./webmin-1.780-1.noarch.rpm
 
 echo 'net.ipv6.conf.all.disable_ipv6=1' >> /etc/sysctl.conf
@@ -93,8 +95,6 @@ echo 'kernel.randomize_va_space=2' >> /etc/sysctl.conf
 
 sysctl -p
 wget https://github.com/Ohelig/ccdcfiles/raw/master/centos/iptables.sh --no-check-certificate
-wget https://github.com/Ohelig/ccdcfiles/raw/master/centos/epel-release-5-4.noarch.rpm --no-check-certificate
-wget https://github.com/Ohelig/ccdcfiles/raw/master/centos/webmin-1.780-1.noarch.rpm --no-check-certificate
 #wget https://github.com/Ohelig/ccdcfiles/raw/master/centos/
 #wget https://github.com/Ohelig/ccdcfiles/raw/master/centos/
 #wget https://github.com/Ohelig/ccdcfiles/raw/master/centos/
