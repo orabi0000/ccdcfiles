@@ -39,13 +39,13 @@ chkconfig --del dovecot
 chkconfig --level 15 dovecot off
 chkconfig --del named
 chkconfig --level 15 named off
-rpm -e bind* -y
-rpm -e sane* -y
-rpm -e cups -y
-rpm -e dropbox* -y
-rpm -e ldapjdk -y 
-rpm -e proftpd* -y
-rpm -e samba* -y
+rpm -e bind* 
+rpm -e sane*
+rpm -e cups
+rpm -e dropbox*
+rpm -e ldapjdk 
+rpm -e proftpd*
+rpm -e samba*
 
 crontab -r
 
