@@ -52,7 +52,6 @@ crontab -r
 echo 'change Ubuntu mysql db'
 #sed -i '/^var $host = 'db.team.local do the stuffs
 
-cd /tmp
 #wget http://download.fedoraproject.org/pub/epel/5/i386/epel-release-5-4.noarch.rpm
 rpm -ivh ./epel-release-5-4.noarch.rpm
 cd
@@ -93,7 +92,12 @@ echo 'fs.protected_symlinks=1' >> /etc/sysctl.conf
 echo 'kernel.randomize_va_space=2' >> /etc/sysctl.conf
 
 sysctl -p
-
+wget https://github.com/Ohelig/ccdcfiles/raw/master/centos/iptables.sh
+wget https://github.com/Ohelig/ccdcfiles/raw/master/centos/epel-release-5-4.noarch.rpm
+wget https://github.com/Ohelig/ccdcfiles/raw/master/centos/webmin-1.780-1.noarch.rpm
+#wget https://github.com/Ohelig/ccdcfiles/raw/master/centos/
+#wget https://github.com/Ohelig/ccdcfiles/raw/master/centos/
+#wget https://github.com/Ohelig/ccdcfiles/raw/master/centos/
 bash ./iptables.sh
 
 rpm -e imagemagick -y
