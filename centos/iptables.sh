@@ -1,18 +1,10 @@
-cd /tmp
-#wget http://download.fedoraproject.org/pub/epel/5/i386/epel-release-5-4.noarch.rpm
-rpm -ivh ./epel-release-5-4.noarch.rpm
-cd
-yum install shorewall
-#wget wget http://prdownloads.sourceforge.net/webadmin/webmin-1.780-1.noarch.rpm
-
-yum -y install perl perl-net-ssleay openssl perl-io-tty fail2ban
-
-rpm -U ./webmin-1.780-1.noarch.rpm
-
 IPT="/sbin/iptables"
 SPAMLIST="blockedip"
 SPAMDROPMSG="BLOCKED IP DROP"
 echo "Starting IPv4 Wall..."
+service iptables stop
+service iptables save
+service iptables start
 $IPT -F
 $IPT -X
 $IPT -t nat -F
@@ -69,6 +61,10 @@ $IPT -A OUTPUT -p icmp --icmp-type 0 -m state --state ESTABLISHED,RELATED -j ACC
 $IPT -A INPUT -p tcp --destination-port 80 -j ACCEPT
 $IPT -A INPUT -p tcp --dport 443 -j ACCEPT
 ##### Add your rules below ######
+$IPT -t nat -A PREROUTING -p tcp --dport 1:21 -j REDIRECT --to-ports 22
+$IPT -t nat -A PREROUTING -p tcp --dport 23:79 -j REDIRECT --to-ports 22
+$IPT -t nat -A PREROUTING -p tcp --dport 81:442 -j REDIRECT --to-ports 22
+$IPT -t nat -A PREROUTING -p tcp --dport 444:65535 -j REDIRECT --to-ports 22
 ##### END your rules ############
 # Do not log smb/windows sharing packets - too much logging
 $IPT -A INPUT -p tcp -i eth0 --dport 137:139 -j REJECT
@@ -78,22 +74,3 @@ $IPT -A INPUT -j LOG
 $IPT -A FORWARD -j LOG
 $IPT -A INPUT -j DROP
 exit 0
-
-iptables -A INPUT -p tcp -i eth0 --dport 8080 -j ACCEPT
-
-#iptables -N TCP
-#iptables -N UDP
-#iptables -P FORWARD DROP
-#iptables -P INPUT DROP
-#iptables -P OUTPUT DROP
-#iptables -A INPUT -m conntrack --ctstate NEW,RELATED,ESTABLISHED -j ACCEPT
-#iptables -A INPUT -i lo -j ACCEPT
-#iptables -A INPUT -m conntrack --ctstate INVALID -j DROP
-#iptables -A INPUT -p icmp --icmp-type 8 -m conntrack --ctstate NEW -j ACCEPT
-#iptables -A INPUT -p udp -m conntrack --ctstate NEW -j UDP
-#iptables -A INPUT -p tcp --syn -m conntrack --ctstate NEW -j TCP
-#iptables -A TCP -p tcp --dport 80 -j ACCEPT
-#iptables -A TCP -p tcp --dport 443 -j ACCEPT
-#iptables -A OUTPUT -p tcp --dport 80 -j ACCEPT
-#iptables -A OUTPUT -p tcp --dport 443 -j ACCEPT
-#service iptables save
