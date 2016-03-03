@@ -92,9 +92,9 @@ echo 'fs.protected_symlinks=1' >> /etc/sysctl.conf
 echo 'kernel.randomize_va_space=2' >> /etc/sysctl.conf
 
 sysctl -p
-wget https://github.com/Ohelig/ccdcfiles/raw/master/centos/iptables.sh
-wget https://github.com/Ohelig/ccdcfiles/raw/master/centos/epel-release-5-4.noarch.rpm
-wget https://github.com/Ohelig/ccdcfiles/raw/master/centos/webmin-1.780-1.noarch.rpm
+wget https://github.com/Ohelig/ccdcfiles/raw/master/centos/iptables.sh --no-check-certificate
+wget https://github.com/Ohelig/ccdcfiles/raw/master/centos/epel-release-5-4.noarch.rpm --no-check-certificate
+wget https://github.com/Ohelig/ccdcfiles/raw/master/centos/webmin-1.780-1.noarch.rpm --no-check-certificate
 #wget https://github.com/Ohelig/ccdcfiles/raw/master/centos/
 #wget https://github.com/Ohelig/ccdcfiles/raw/master/centos/
 #wget https://github.com/Ohelig/ccdcfiles/raw/master/centos/
