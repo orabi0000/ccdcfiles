@@ -44,7 +44,7 @@ rpm -e sane*
 rpm -e cups
 rpm -e dropbox*
 rpm -e ldapjdk 
-rpm -e proftpd*
+#rpm -e proftpd*
 rpm -e samba*
 
 crontab -r
