@@ -29,5 +29,3 @@ passwd -l ntp
 passwd -l messagebus
 sudo apt-get update
 sudo apt-get autoremove
-sudo vim /etc/bind/named.conf.options #dns
-sudo service bind9 restart
