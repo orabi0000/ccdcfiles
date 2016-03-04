@@ -5,7 +5,7 @@ wget https://github.com/Ohelig/ccdcfiles/raw/master/ubuntu/script2.sh --no-check
 mkdir /etc/update-manager/release-upgrades.d/
 mv unauth.cfg /etc/update-manager/release-upgrades.d/unauth.cfg
 vim /etc/fstab #comment out the problem
-sudo vim /etc/bind/named.conf.options #dns
-sudo /etc/initd/bind9 restart
+#sudo vim /etc/bind/named.conf.options #dns
+#sudo /etc/init.d/bind9 restart
 sudo do-release-upgrade
 #have fun :)
