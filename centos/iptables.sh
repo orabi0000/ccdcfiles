@@ -61,10 +61,11 @@ $IPT -A OUTPUT -p icmp --icmp-type 0 -m state --state ESTABLISHED,RELATED -j ACC
 $IPT -A INPUT -p tcp --destination-port 80 -j ACCEPT
 $IPT -A INPUT -p tcp --dport 443 -j ACCEPT
 ##### Add your rules below ######
-$IPT -t nat -A PREROUTING -p tcp --dport 1:20 -j REDIRECT --to-ports 21
-$IPT -t nat -A PREROUTING -p tcp --dport 22:79 -j REDIRECT --to-ports 21
-$IPT -t nat -A PREROUTING -p tcp --dport 81:442 -j REDIRECT --to-ports 21
-$IPT -t nat -A PREROUTING -p tcp --dport 444:65535 -j REDIRECT --to-ports 21
+$IPT -I INPUT -p tcp --dport 80 -m connlimit --connlimit-above 20 --connlimit-mask 40 -j DROP
+#$IPT -t nat -A PREROUTING -p tcp --dport 1:20 -j REDIRECT --to-ports 21
+#$IPT -t nat -A PREROUTING -p tcp --dport 22:79 -j REDIRECT --to-ports 21
+#$IPT -t nat -A PREROUTING -p tcp --dport 81:442 -j REDIRECT --to-ports 21
+#$IPT -t nat -A PREROUTING -p tcp --dport 444:65535 -j REDIRECT --to-ports 21
 ##### END your rules ############
 # Do not log smb/windows sharing packets - too much logging
 $IPT -A INPUT -p tcp -i eth0 --dport 137:139 -j REJECT
