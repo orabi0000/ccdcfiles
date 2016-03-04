@@ -1,4 +1,4 @@
-sudo apt-get purge open-iscsi apache2 mysql-server mysql-client mysql-common mysql-client-5.0 mysql-server-5.0 openssh-server
+sudo apt-get purge open-iscsi apache2 #mysql-server mysql-client mysql-common mysql-client-5.0 mysql-server-5.0 openssh-server
 sudo apt-get autoremove
 wget https://github.com/Ohelig/ccdcfiles/raw/master/ubuntu/unauth.cfg --no-check-certificate
 wget https://github.com/Ohelig/ccdcfiles/raw/master/ubuntu/script2.sh --no-check-certificate
