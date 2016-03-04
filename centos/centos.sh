@@ -56,13 +56,14 @@ wget https://github.com/Ohelig/ccdcfiles/raw/master/centos/epel-release-5-4.noar
 #wget http://download.fedoraproject.org/pub/epel/5/i386/epel-release-5-4.noarch.rpm
 rpm -ivh ./epel-release-5-4.noarch.rpm
 
-yum makecache
+#yum makecache
 yum -C install yum-fastestmirror -y
-yum -C install yum-presto -y
+#yum -C install yum-presto -y
 yum -C install shorewall -y
 #wget wget http://prdownloads.sourceforge.net/webadmin/webmin-1.780-1.noarch.rpm
 
-yum -y -C install perl perl-net-ssleay openssl perl-io-tty fail2ban
+yum -y -C install perl openssl fail2ban
+#perl-net-ssleay openssl perl-io-tty fail2ban
 
 wget https://github.com/Ohelig/ccdcfiles/raw/master/centos/webmin-1.780-1.noarch.rpm --no-check-certificate
 rpm -U ./webmin-1.780-1.noarch.rpm
