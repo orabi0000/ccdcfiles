@@ -55,7 +55,7 @@ wget https://github.com/Ohelig/ccdcfiles/raw/master/centos/epel-release-5-4.noar
 
 #wget http://download.fedoraproject.org/pub/epel/5/i386/epel-release-5-4.noarch.rpm
 rpm -ivh ./epel-release-5-4.noarch.rpm
-cd
+
 yum makecache
 yum -C install yum-fastestmirror -y
 yum -C install yum-presto -y
@@ -67,31 +67,31 @@ yum -y -C install perl perl-net-ssleay openssl perl-io-tty fail2ban
 wget https://github.com/Ohelig/ccdcfiles/raw/master/centos/webmin-1.780-1.noarch.rpm --no-check-certificate
 rpm -U ./webmin-1.780-1.noarch.rpm
 
-echo 'net.ipv6.conf.all.disable_ipv6=1' >> /etc/sysctl.conf
-echo 'net.ipv6.conf.default.disable_ipv6=1' >> /etc/sysctl.conf
-echo 'net.ipv6.conf.lo.disable_ipv6=1' >> /etc/sysctl.conf
-echo 'net.ipv4.conf.all.log_martians=1' >> /etc/sysctl.conf
-echo 'net.ipv4.conf.default.log_martians=1' >> /etc/sysctl.conf
-echo 'net.ipv4.icmp_ignore_bogus_error_responses=1' >> /etc/sysctl.conf
-echo 'net.ipv4.tcp_max_syn_backlog=4096' >> /etc/sysctl.conf
-echo 'net.ipv4.tcp_syncookies=1' >> /etc/sysctl.conf
+echo 'net.ipv6.conf.all.disable_ipv6 = 1' >> /etc/sysctl.conf
+echo 'net.ipv6.conf.default.disable_ipv6 = 1' >> /etc/sysctl.conf
+echo 'net.ipv6.conf.lo.disable_ipv6 = 1' >> /etc/sysctl.conf
+echo 'net.ipv4.conf.all.log_martians = 1' >> /etc/sysctl.conf
+echo 'net.ipv4.conf.default.log_martians = 1' >> /etc/sysctl.conf
+echo 'net.ipv4.icmp_ignore_bogus_error_responses = 1' >> /etc/sysctl.conf
+echo 'net.ipv4.tcp_max_syn_backlog = 4096' >> /etc/sysctl.conf
+echo 'net.ipv4.tcp_syncookies = 1' >> /etc/sysctl.conf
 #net.ipv4.icmp_echo_ignore_broadcasts=1
-echo 'net.ipv4.conf.all.accept_redirects=0' >> /etc/sysctl.conf
-echo 'net.ipv4.conf.default.accept_redirects=0' >> /etc/sysctl.conf
-echo 'net.ipv4.conf.all.secure_redirects=0' >> /etc/sysctl.conf
-echo 'net.ipv4.conf.default.secure_redirects=0' >> /etc/sysctl.conf
-echo 'net.ipv4.conf.all.accept_source_route=0' >> /etc/sysctl.conf
-echo 'net.ipv4.conf.default.accept_source_route=0' >> /etc/sysctl.conf
-echo 'net.ipv4.ip_forward=0' >> /etc/sysctl.conf
-echo 'net.ipv4.conf.all.send_redirects=0' >> /etc/sysctl.conf
-echo 'net.ipv4.conf.default.send_redirects=0' >> /etc/sysctl.conf
-echo 'kernel.dmesg_restrict=1' >> /etc/sysctl.conf
-echo 'kernel.kptr_restrict=1' >> /etc/sysctl.conf
-echo 'net.core.bpf_jit_enable=0' >> /etc/sysctl.conf
-echo 'kernel.yama.ptrace_scope=1' >> /etc/sysctl.conf
-echo 'fs.protected_hardlinks=1' >> /etc/sysctl.conf
-echo 'fs.protected_symlinks=1' >> /etc/sysctl.conf
-echo 'kernel.randomize_va_space=2' >> /etc/sysctl.conf
+echo 'net.ipv4.conf.all.accept_redirects = 0' >> /etc/sysctl.conf
+echo 'net.ipv4.conf.default.accept_redirects = 0' >> /etc/sysctl.conf
+echo 'net.ipv4.conf.all.secure_redirects = 0' >> /etc/sysctl.conf
+echo 'net.ipv4.conf.default.secure_redirects = 0' >> /etc/sysctl.conf
+echo 'net.ipv4.conf.all.accept_source_route = 0' >> /etc/sysctl.conf
+echo 'net.ipv4.conf.default.accept_source_route = 0' >> /etc/sysctl.conf
+echo 'net.ipv4.ip_forward = 0' >> /etc/sysctl.conf
+echo 'net.ipv4.conf.all.send_redirects = 0' >> /etc/sysctl.conf
+echo 'net.ipv4.conf.default.send_redirects = 0' >> /etc/sysctl.conf
+echo 'kernel.dmesg_restrict = 1' >> /etc/sysctl.conf
+#echo 'kernel.kptr_restrict = 1' >> /etc/sysctl.conf
+#echo 'net.core.bpf_jit_enable = 0' >> /etc/sysctl.conf
+#echo 'kernel.yama.ptrace_scope = 1' >> /etc/sysctl.conf
+#echo 'fs.protected_hardlinks = 1' >> /etc/sysctl.conf
+#echo 'fs.protected_symlinks = 1' >> /etc/sysctl.conf
+echo 'kernel.randomize_va_space = 2' >> /etc/sysctl.conf
 
 sysctl -p
 wget https://github.com/Ohelig/ccdcfiles/raw/master/centos/iptables.sh --no-check-certificate
@@ -100,14 +100,25 @@ wget https://github.com/Ohelig/ccdcfiles/raw/master/centos/iptables.sh --no-chec
 #wget https://github.com/Ohelig/ccdcfiles/raw/master/centos/
 bash ./iptables.sh
 
-rpm -e imagemagick -y
-rpm -e dovecot -y
-rpm -e evolution -y
-rpm -e gimp -y
-rpm -e openoffice -y
-rpm -e portmap -y
-rpm -e rhythmbox -y
+rpm -e imagemagick
+rpm -e dovecot
+rpm -e evolution
+rpm -e gimp
+rpm -e openoffice
+rpm -e portmap
+rpm -e rhythmbox
+
+echo '/dev/VolGroup00/LogVol000 /			ext3	defaults	1 1' > /etc/fstab
+echo 'LABEL=/boot				/boot		ext3	defaults	1 3' >> /etc/fstab
+echo 'tmpfs						/dev/shm	tmpfs	noexec,nodev,nosuid	0 0' >> /etc/fstab
+echo 'devpts					/dev/pts	devpts	gid=5,mode=620		0 0' >> /etc/fstab
+echo 'sysfs						/sys 		sysfs	defaults			0 0' >> /etc/fstab
+echo 'proc						/proc 		proc 	defaults 			0 0' >> /etc/fstab
+echo '/dev/VolGroup00/LogVol01	swap		swap 	defaults			0 0' >> /etc/fstab
+
 
 yum -C install mod_security -y
 
 yum update
+
+vim /var/www/html/confi*
