@@ -10,7 +10,7 @@ chattr +i /etc/passwd
 chattr +i /etc/shadow
 service sshd stop
 service capi stop
-service dropbox stop
+#service dropbox stop
 service dovecot stop
 service named stop
 service cups stop
