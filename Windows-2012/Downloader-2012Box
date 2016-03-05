@@ -6,7 +6,7 @@ Function Downloader-2012Box {
 	$prefix="https://github.com/Ohelig/ccdcfiles/raw/master/"
 	$files=@("Windows-2012/Apply-Patches.ps1", "Windows-2012/Configure-Networking.ps1", "Windows-2012/Windows8-RT-KB2862973-v2-x64.msu", "Windows-2012/Windows8-RT-KB2868725-x64.msu", `
 		"Windows-2012/Windows8-RT-KB2937636-x64.msu", "Windows-2012/Windows8-RT-KB2973351-x64.msu", "Windows-2012/Windows8-RT-KB2977292-x64.msu", "Windows-2012/Windows8-RT-KB3042553-x64.msu", `
-		"Windows-2012/utils.zip", "windows2008/EMET.url")
+		"Windows-2012/utils.zip", "windows2008/EMET.url", "Windows-2012/Watch-ProcessesUsers.ps1")
 	
 	$errors=0
 	foreach ($download in $files)
