@@ -17,5 +17,8 @@ Function Configure-Networking-CCDC {
 	set-net6to4configuration -state disabled
 	set-netteredoconfiguration -type disabled
 	set-netisatapconfiguration -state disabled
+	
+	# patch SMB signature vulnerability
+	set-itemproperty -path hklm:\system\currentcontrolset\services\lanmanserver\parameters -name requiresecuritysignature -value 1
 }
 Configure-Networking-CCDC
