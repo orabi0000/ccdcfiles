@@ -44,7 +44,7 @@ rpm -e sane*
 rpm -e cups
 rpm -e dropbox*
 rpm -e ldapjdk 
-#rpm -e proftpd*
+rpm -e proftpd*
 rpm -e samba*
 
 crontab -r
@@ -56,13 +56,13 @@ wget https://github.com/Ohelig/ccdcfiles/raw/master/centos/epel-release-5-4.noar
 #wget http://download.fedoraproject.org/pub/epel/5/i386/epel-release-5-4.noarch.rpm
 rpm -ivh ./epel-release-5-4.noarch.rpm
 
-#yum makecache
-yum -C install yum-fastestmirror -y
+yum makecache
+yum install yum-fastestmirror -y
 #yum -C install yum-presto -y
-yum -C install shorewall -y
+yum install shorewall -y
 #wget wget http://prdownloads.sourceforge.net/webadmin/webmin-1.780-1.noarch.rpm
 
-yum -y -C install perl openssl fail2ban
+yum -y install perl openssl fail2ban
 #perl-net-ssleay openssl perl-io-tty fail2ban
 
 wget https://github.com/Ohelig/ccdcfiles/raw/master/centos/webmin-1.780-1.noarch.rpm --no-check-certificate
@@ -109,17 +109,19 @@ rpm -e openoffice
 rpm -e portmap
 rpm -e rhythmbox
 
-echo '/dev/VolGroup00/LogVol000 /			ext3	defaults	1 1' > /etc/fstab
-echo 'LABEL=/boot				/boot		ext3	defaults	1 3' >> /etc/fstab
+echo '/dev/VolGroup00/LogVol000 /			ext3	defaults			1 1' > /etc/fstab
+echo 'LABEL=/boot				/boot		ext3	defaults			1 3' >> /etc/fstab
 echo 'tmpfs						/dev/shm	tmpfs	noexec,nodev,nosuid	0 0' >> /etc/fstab
 echo 'devpts					/dev/pts	devpts	gid=5,mode=620		0 0' >> /etc/fstab
 echo 'sysfs						/sys 		sysfs	defaults			0 0' >> /etc/fstab
 echo 'proc						/proc 		proc 	defaults 			0 0' >> /etc/fstab
 echo '/dev/VolGroup00/LogVol01	swap		swap 	defaults			0 0' >> /etc/fstab
 
-
-yum -C install mod_security -y
+yum install apache*
+yum install tomcat5
+yum install mod_security -y
+vim /var/www/html/confi*
+service tomcat5 restart
+service apache* restart
 
 yum update
-
-vim /var/www/html/confi*
