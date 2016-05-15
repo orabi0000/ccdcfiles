@@ -1,0 +1,3 @@
+install nethogs (shows all processes using bandwidth)
+find way to watch for changes in filesystem (can just show changes, we can use that to determine if we're hacked)
+
