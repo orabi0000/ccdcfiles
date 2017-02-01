@@ -57,16 +57,20 @@ wget https://github.com/Ohelig/ccdcfiles/raw/master/centos/epel-release-5-4.noar
 rpm -ivh ./epel-release-5-4.noarch.rpm
 
 yum makecache
-yum install yum-fastestmirror -y
+#yum install yum-fastestmirror -y
 #yum -C install yum-presto -y
-yum install shorewall -y
+#yum install shorewall -y
 #wget wget http://prdownloads.sourceforge.net/webadmin/webmin-1.780-1.noarch.rpm
 
 yum -y install perl openssl fail2ban
 #perl-net-ssleay openssl perl-io-tty fail2ban
 
-wget https://github.com/Ohelig/ccdcfiles/raw/master/centos/webmin-1.780-1.noarch.rpm --no-check-certificate
-rpm -U ./webmin-1.780-1.noarch.rpm
+#wget https://github.com/Ohelig/ccdcfiles/raw/master/centos/webmin-1.780-1.noarch.rpm --no-check-certificate
+wget http://prdownloads.sourceforge.net/webadmin/webmin-1.831-1.noarch.rpm --no-check-certificate
+yum -y install perl perl-Net-SSLeay openssl perl-IO-Tty
+
+rpm -U webmin-1.831-1.noarch.rpm
+
 
 echo 'net.ipv6.conf.all.disable_ipv6 = 1' >> /etc/sysctl.conf
 echo 'net.ipv6.conf.default.disable_ipv6 = 1' >> /etc/sysctl.conf
