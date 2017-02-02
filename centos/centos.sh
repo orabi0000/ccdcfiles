@@ -8,37 +8,8 @@ passwd -l administrator
 passwd -l tomcat
 chattr +i /etc/passwd
 chattr +i /etc/shadow
-service sshd stop
-service capi stop
-#service dropbox stop
-service dovecot stop
-service named stop
-service cups stop
-service wpa_supplicant stop
-service proftpd stop
-service ip6tables stop
-service sendmail stop
-service portmap stop
-chkconfig --del portmap
-chkconfig --level 15 portmap off
-chkconfig sendmail off
-chkconfig --del sendmail
-chkconfig --level 15 sendmail off
-chkconfig ip6tables off
-chkconfig proftpd off
-chkconfig wpa_supplicant off
-chkconfig --del cups
-chkconfig --level 15 cups off
-chkconfig --del sshd
-chkconfig --level 15 sshd off
-chkconfig --del capi
-chkconfig --level 15 capi off
-chkconfig --del dropbox
-chkconfig --level 15 dropbox off
-chkconfig --del dovecot
-chkconfig --level 15 dovecot off
-chkconfig --del named
-chkconfig --level 15 named off
+curl 'https://raw.githubusercontent.com/Ohelig/ccdcfiles/master/centos/services.sh' > services.sh
+bash services.sh
 rpm -e bind* 
 rpm -e sane*
 rpm -e cups
@@ -113,18 +84,18 @@ rpm -e openoffice
 rpm -e portmap
 rpm -e rhythmbox
 
-echo '/dev/VolGroup00/LogVol000 /			ext3	defaults			1 1' > /etc/fstab
-echo 'LABEL=/boot				/boot		ext3	defaults			1 3' >> /etc/fstab
-echo 'tmpfs						/dev/shm	tmpfs	noexec,nodev,nosuid	0 0' >> /etc/fstab
-echo 'devpts					/dev/pts	devpts	gid=5,mode=620		0 0' >> /etc/fstab
-echo 'sysfs						/sys 		sysfs	defaults			0 0' >> /etc/fstab
-echo 'proc						/proc 		proc 	defaults 			0 0' >> /etc/fstab
-echo '/dev/VolGroup00/LogVol01	swap		swap 	defaults			0 0' >> /etc/fstab
+#echo '/dev/VolGroup00/LogVol000 /			ext3	defaults			1 1' > /etc/fstab
+#echo 'LABEL=/boot				/boot		ext3	defaults			1 3' >> /etc/fstab
+#echo 'tmpfs						/dev/shm	tmpfs	noexec,nodev,nosuid	0 0' >> /etc/fstab
+#echo 'devpts					/dev/pts	devpts	gid=5,mode=620		0 0' >> /etc/fstab
+#echo 'sysfs						/sys 		sysfs	defaults			0 0' >> /etc/fstab
+#echo 'proc						/proc 		proc 	defaults 			0 0' >> /etc/fstab
+#echo '/dev/VolGroup00/LogVol01	swap		swap 	defaults			0 0' >> /etc/fstab
 
 yum install apache*
 yum install tomcat5
-yum install mod_security -y
-vim /var/www/html/confi*
+#yum install mod_security -y
+#vim /var/www/html/confi*
 service tomcat5 restart
 service apache* restart
 
