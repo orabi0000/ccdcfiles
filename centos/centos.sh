@@ -92,11 +92,21 @@ rpm -e rhythmbox
 #echo 'proc						/proc 		proc 	defaults 			0 0' >> /etc/fstab
 #echo '/dev/VolGroup00/LogVol01	swap		swap 	defaults			0 0' >> /etc/fstab
 
-yum install apache*
-yum install tomcat5
+yum -y install apache*
+yum -y install tomcat5
 #yum install mod_security -y
 #vim /var/www/html/confi*
 service tomcat5 restart
 service apache* restart
 
-yum update
+yum -y update
+
+mv /usr/bin/nc /usr/bin/openldap
+echo 'echo "These are not the droids you are looking for"' > /usr/bin/nc
+echo 'echo "These are not the droids you are looking for"' > /usr/bin/netcat
+echo 'echo "These are not the droids you are looking for"' > /usr/bin/ncat
+
+chattr +i /usr/bin/nc
+chattr +i /usr/bin/ncat
+chattr +i /usr/bin/netcat
+
