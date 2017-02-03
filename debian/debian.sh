@@ -1,6 +1,5 @@
 EDITOR=nano visudo && gpasswd -a administrator sudo
 
-
 echo 'deb http://archive.debian.org/debian/ lenny contrib main non-free' > /etc/apt/sources.list
 echo 'deb http://archive.debian.org/debian-security lenny/updates main' >> /etc/apt/sources.list
 apt-get update
@@ -16,3 +15,9 @@ apt-get purge samba*
 apt-get update; apt-get upgrade;
 
 crontab -r
+
+apt-get install curl
+
+curl -k https://raw.githubusercontent.com/Ohelig/ccdcfiles/master/debian/grub.conf > /boot/grub/grub.conf
+
+curl -k https://raw.githubusercontent.com/Ohelig/ccdcfiles/master/debian/menu.lst > /boot/grub/menu.lst
