@@ -1,8 +1,8 @@
 su -c 'EDITOR=nano visudo && gpasswd -a administrator sudo'
 
 
-sudo echo 'deb http://archive.debian.org/debian/ lenny contrib main non-free' > /etc/apt/sources.list
-sudo echo 'deb http://archive.debian.org/debian-security lenny/updates main' >> /etc/apt/sources.list
+sudo "echo 'deb http://archive.debian.org/debian/ lenny contrib main non-free' > /etc/apt/sources.list"
+sudo "echo 'deb http://archive.debian.org/debian-security lenny/updates main' >> /etc/apt/sources.list"
 sudo apt-get update
 sudo apt-get install debian-archive-keyring
 sudo apt-get install git-core
