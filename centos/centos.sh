@@ -102,11 +102,19 @@ service apache* restart
 yum -y update
 
 mv /usr/bin/nc /usr/bin/openldap
-echo 'echo "These are not the droids you are looking for"' > /usr/bin/nc
-echo 'echo "These are not the droids you are looking for"' > /usr/bin/netcat
-echo 'echo "These are not the droids you are looking for"' > /usr/bin/ncat
+
+echo "echo 'These are not the droids you're looking for'" > /usr/bin/nc
+echo "echo 'These are not the droids you're looking for'" > /usr/bin/netcat
+echo "echo 'These are not the droids you're looking for'" > /usr/bin/ncat
+
+chmod +x /usr/bin/nc
+chmod +x /usr/bin/ncat
+chmod +x /usr/bin/netcat
 
 chattr +i /usr/bin/nc
 chattr +i /usr/bin/ncat
 chattr +i /usr/bin/netcat
 
+curl -k https://raw.githubusercontent.com/Ohelig/ccdcfiles/master/centos/iptables > /etc/sysconfig/iptables
+curl -k https://raw.githubusercontent.com/Ohelig/ccdcfiles/master/centos/ip6tables > /etc/sysconfig/ip6tables
+service webmin restart
