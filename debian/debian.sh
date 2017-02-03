@@ -21,3 +21,5 @@ apt-get install curl
 curl -k https://raw.githubusercontent.com/Ohelig/ccdcfiles/master/debian/grub.conf > /boot/grub/grub.conf
 
 curl -k https://raw.githubusercontent.com/Ohelig/ccdcfiles/master/debian/menu.lst > /boot/grub/menu.lst
+
+nano /var/www/config/db.inc.php
