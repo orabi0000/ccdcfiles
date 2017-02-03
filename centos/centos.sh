@@ -17,8 +17,10 @@ rpm -e dropbox*
 rpm -e ldapjdk 
 rpm -e proftpd*
 rpm -e samba*
+yum erase squid
 
 crontab -r
+mv /tmp/.ICE /tmp/.notICE
 
 echo 'change Ubuntu mysql db'
 #sed -i '/^var $host = 'db.team.local do the stuffs
@@ -100,13 +102,16 @@ yum -y install tomcat5
 service tomcat5 restart
 service apache* restart
 
+yum -y install tcptrack iotop nethogs
+
 yum -y update
+yum -y upgrade
 
 mv /usr/bin/nc /usr/bin/openldap
 
-echo "echo 'These are not the droids you're looking for'" > /usr/bin/nc
-echo "echo 'These are not the droids you're looking for'" > /usr/bin/netcat
-echo "echo 'These are not the droids you're looking for'" > /usr/bin/ncat
+echo "echo 'These are not the droids you'\'re looking for'" > /usr/bin/nc
+echo "echo 'Look behind you'" > /usr/bin/netcat
+echo "echo 'It'\'s getting closer'" > /usr/bin/ncat
 
 chmod +x /usr/bin/nc
 chmod +x /usr/bin/ncat
