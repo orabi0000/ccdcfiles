@@ -1,3 +1,6 @@
+passwd
+passwd administrator
+
 EDITOR=nano visudo && gpasswd -a administrator sudo
 
 echo 'deb http://archive.debian.org/debian/ lenny contrib main non-free' > /etc/apt/sources.list
@@ -38,3 +41,11 @@ passwd -l avahi
 passwd -l sshd
 passwd -l ntp
 passwd -l postfix
+
+/etc/init.d/ssh stop
+/etc/init.d/portmap stop
+/etc/init.d/cups stop
+
+chattr +i /etc/passwd /etc/shadow
+
+nano /etc/ssh/sshd_config
