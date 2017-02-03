@@ -22,7 +22,8 @@ crontab -r
 
 echo 'change Ubuntu mysql db'
 #sed -i '/^var $host = 'db.team.local do the stuffs
-wget https://github.com/Ohelig/ccdcfiles/raw/master/centos/epel-release-5-4.noarch.rpm --no-check-certificate
+#wget https://github.com/Ohelig/ccdcfiles/raw/master/centos/epel-release-5-4.noarch.rpm --no-check-certificate
+curl -k https://github.com/Ohelig/ccdcfiles/raw/master/centos/epel-release-5-4.noarch.rpm > epel-release-5-4.noarch.rpm
 
 #wget http://download.fedoraproject.org/pub/epel/5/i386/epel-release-5-4.noarch.rpm
 rpm -ivh ./epel-release-5-4.noarch.rpm
@@ -121,3 +122,6 @@ service webmin restart
 
 useradd -m v
 passwd v
+EDITOR=vim visudo
+gpasswd -a sudo v
+echo 'switch to v and lock root'
