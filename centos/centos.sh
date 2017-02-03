@@ -124,7 +124,7 @@ chattr +i /usr/bin/netcat
 
 curl -k https://raw.githubusercontent.com/Ohelig/ccdcfiles/master/centos/iptables > /etc/sysconfig/iptables
 curl -k https://raw.githubusercontent.com/Ohelig/ccdcfiles/master/centos/ip6tables > /etc/sysconfig/ip6tables
-service webmin restart
+service iptables restart
 
 useradd -m v
 passwd v
