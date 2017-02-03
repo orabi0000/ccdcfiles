@@ -1,3 +1,5 @@
+https://firewallingit.blogspot.com/2015/04/ccdc-debian-hardening-guide.html
+
 Steps
 
     Enter Configuration mode:
@@ -75,7 +77,7 @@ useful_commands
 
 tar -zxvf [FILE]
 
-Now, go where the files where extracted… Usually it’s a new directory, where you executed the command. Use ‘cd’.
+Now, go where the files where extractedâ€¦ Usually itâ€™s a new directory, where you executed the command. Use â€˜cdâ€™.
 
 ./configure
 make
@@ -146,10 +148,10 @@ make
 make install
 dpkg -i 
 pkg.deb
- – install a package (Debian)
+ â€“ install a package (Debian)
 rpm -Uvh 
 pkg.rpm
- – install a package (RPM)
+ â€“ install a package (RPM)
 
 
 
