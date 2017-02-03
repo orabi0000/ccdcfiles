@@ -23,3 +23,18 @@ curl -k https://raw.githubusercontent.com/Ohelig/ccdcfiles/master/debian/grub.co
 curl -k https://raw.githubusercontent.com/Ohelig/ccdcfiles/master/debian/menu.lst > /boot/grub/menu.lst
 
 nano /var/www/config/db.inc.php
+
+passwd -l sync
+passwd -l games
+passwd -l lp
+passwd -l news
+passwd -l uucp
+passwd -l proxy
+passwd -l backup
+passwd -l list
+passwd -l irc
+passwd -l gnats
+passwd -l avahi
+passwd -l sshd
+passwd -l ntp
+passwd -l postfix
