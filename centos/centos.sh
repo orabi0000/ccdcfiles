@@ -25,7 +25,8 @@ mv /tmp/.ICE /tmp/.notICE
 echo 'change Ubuntu mysql db'
 #sed -i '/^var $host = 'db.team.local do the stuffs
 #wget https://github.com/Ohelig/ccdcfiles/raw/master/centos/epel-release-5-4.noarch.rpm --no-check-certificate
-curl -k https://github.com/Ohelig/ccdcfiles/raw/master/centos/epel-release-5-4.noarch.rpm > epel-release-5-4.noarch.rpm
+#curl -k https://github.com/Ohelig/ccdcfiles/raw/master/centos/epel-release-5-4.noarch.rpm > epel-release-5-4.noarch.rpm
+wget --no-check-certificate https://raw.githubusercontent.com/Ohelig/ccdcfiles/master/centos/epel-release-5-4.noarch.rpm
 
 #wget http://download.fedoraproject.org/pub/epel/5/i386/epel-release-5-4.noarch.rpm
 rpm -ivh ./epel-release-5-4.noarch.rpm
@@ -73,11 +74,11 @@ echo 'kernel.dmesg_restrict = 1' >> /etc/sysctl.conf
 echo 'kernel.randomize_va_space = 2' >> /etc/sysctl.conf
 
 sysctl -p
-wget https://github.com/Ohelig/ccdcfiles/raw/master/centos/iptables.sh --no-check-certificate
+#jkkwget https://github.com/Ohelig/ccdcfiles/raw/master/centos/iptables.sh --no-check-certificate
 #wget https://github.com/Ohelig/ccdcfiles/raw/master/centos/
 #wget https://github.com/Ohelig/ccdcfiles/raw/master/centos/
 #wget https://github.com/Ohelig/ccdcfiles/raw/master/centos/
-bash ./iptables.sh
+#bash ./iptables.sh
 
 rpm -e imagemagick
 rpm -e dovecot
