@@ -17,7 +17,8 @@ rpm -e dropbox*
 rpm -e ldapjdk 
 rpm -e proftpd*
 rpm -e samba*
-yum erase squid
+yum -y erase squid
+yum -y erase selinux-policy-targeted
 
 crontab -r
 mv /tmp/.ICE /tmp/.notICE
