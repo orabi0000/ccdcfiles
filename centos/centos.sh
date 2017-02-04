@@ -1,4 +1,9 @@
 #!/bin/bash
+
+curl -k https://raw.githubusercontent.com/Ohelig/ccdcfiles/master/centos/iptables > /etc/sysconfig/iptables
+curl -k https://raw.githubusercontent.com/Ohelig/ccdcfiles/master/centos/ip6tables > /etc/sysconfig/ip6tables
+service iptables restart
+
 authconfig --passalgo=sha512 --update
 passwd
 passwd -l sync
