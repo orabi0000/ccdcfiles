@@ -1,5 +1,3 @@
-sudo apt-get purge apache2
-passwd
 passwd -l daemon
 passwd -l bin
 passwd -l sys
@@ -27,5 +25,6 @@ passwd -l statd
 passwd -l administrator
 passwd -l ntp
 passwd -l messagebus
-sudo apt-get update
-sudo apt-get autoremove
+
+echo Setting new password for $( whoami )...
+passwd
