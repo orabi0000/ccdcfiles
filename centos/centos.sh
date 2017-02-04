@@ -47,10 +47,10 @@ yum -y install perl openssl fail2ban
 #perl-net-ssleay openssl perl-io-tty fail2ban
 
 #wget https://github.com/Ohelig/ccdcfiles/raw/master/centos/webmin-1.780-1.noarch.rpm --no-check-certificate
-wget http://prdownloads.sourceforge.net/webadmin/webmin-1.831-1.noarch.rpm --no-check-certificate
-yum -y install perl perl-Net-SSLeay openssl perl-IO-Tty
+#wget http://prdownloads.sourceforge.net/webadmin/webmin-1.831-1.noarch.rpm --no-check-certificate
+#yum -y install perl perl-Net-SSLeay openssl perl-IO-Tty
 
-rpm -U webmin-1.831-1.noarch.rpm
+#rpm -U webmin-1.831-1.noarch.rpm
 
 
 echo 'net.ipv6.conf.all.disable_ipv6 = 1' >> /etc/sysctl.conf
@@ -131,9 +131,3 @@ chattr +i /usr/bin/netcat
 #curl -k https://raw.githubusercontent.com/Ohelig/ccdcfiles/master/centos/iptables > /etc/sysconfig/iptables
 #curl -k https://raw.githubusercontent.com/Ohelig/ccdcfiles/master/centos/ip6tables > /etc/sysconfig/ip6tables
 #service iptables restart
-
-useradd -m v
-passwd v
-EDITOR=vim visudo
-gpasswd -a sudo v
-echo 'switch to v and lock root'
