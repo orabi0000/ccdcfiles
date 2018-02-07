@@ -1,8 +1,14 @@
 #!/bin/bash
 
-curl -k https://raw.githubusercontent.com/Ohelig/ccdcfiles/master/centos/iptables > /etc/sysconfig/iptables
-curl -k https://raw.githubusercontent.com/Ohelig/ccdcfiles/master/centos/ip6tables > /etc/sysconfig/ip6tables
+#Setting IPTables firewall
+curl -k https://raw.githubusercontent.com/mnsu-isso/ccdcfiles/master/box-files/centos/iptables > /etc/sysconfig/iptables
+curl -k https://raw.githubusercontent.com/mnsu-isso/ccdcfiles/master/box-files/centos/ip6tables > /etc/sysconfig/ip6tables
 service iptables restart
+
+#Updating local mirrorlists
+echo "http://vault.centos.org/5.11/os/x86_64/" > /var/cache/yum/base/mirrorlist.txt
+echo "http://vault.centos.org/5.11/extras/x86_64/" > /var/cache/yum/extras/mirrorlist.txt
+echo "http://vault.centos.org/5.11/updates/x86_64/" > /var/cache/yum/updates/mirrorlist.txt
 
 authconfig --passalgo=sha512 --update
 passwd
@@ -13,7 +19,7 @@ passwd -l administrator
 passwd -l tomcat
 chattr +i /etc/passwd
 chattr +i /etc/shadow
-curl 'https://raw.githubusercontent.com/Ohelig/ccdcfiles/master/centos/services.sh' > services.sh
+curl -k 'https://raw.githubusercontent.com/mnsu-isso/ccdcfiles/master/box-files/centos/services.sh' > services.sh
 bash services.sh
 rpm -e bind* 
 rpm -e sane*
@@ -30,9 +36,7 @@ mv /tmp/.ICE /tmp/.notICE
 
 echo 'change Ubuntu mysql db'
 #sed -i '/^var $host = 'db.team.local do the stuffs
-#wget https://github.com/Ohelig/ccdcfiles/raw/master/centos/epel-release-5-4.noarch.rpm --no-check-certificate
-#curl -k https://github.com/Ohelig/ccdcfiles/raw/master/centos/epel-release-5-4.noarch.rpm > epel-release-5-4.noarch.rpm
-wget --no-check-certificate https://raw.githubusercontent.com/Ohelig/ccdcfiles/master/centos/epel-release-5-4.noarch.rpm
+wget --no-check-certificate https://raw.githubusercontent.com/mnsu-isso/ccdcfiles/master/box-files/centos/epel-release-5-4.noarch.rpm
 
 #wget http://download.fedoraproject.org/pub/epel/5/i386/epel-release-5-4.noarch.rpm
 rpm -ivh ./epel-release-5-4.noarch.rpm
@@ -93,14 +97,6 @@ rpm -e gimp
 rpm -e openoffice
 rpm -e portmap
 rpm -e rhythmbox
-
-#echo '/dev/VolGroup00/LogVol000 /			ext3	defaults			1 1' > /etc/fstab
-#echo 'LABEL=/boot				/boot		ext3	defaults			1 3' >> /etc/fstab
-#echo 'tmpfs						/dev/shm	tmpfs	noexec,nodev,nosuid	0 0' >> /etc/fstab
-#echo 'devpts					/dev/pts	devpts	gid=5,mode=620		0 0' >> /etc/fstab
-#echo 'sysfs						/sys 		sysfs	defaults			0 0' >> /etc/fstab
-#echo 'proc						/proc 		proc 	defaults 			0 0' >> /etc/fstab
-#echo '/dev/VolGroup00/LogVol01	swap		swap 	defaults			0 0' >> /etc/fstab
 
 yum -y install apache*
 yum -y install tomcat5
